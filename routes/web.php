@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Livewire\Counter;
+use App\Http\Livewire\Form\Login;
+use App\Http\Livewire\Form\Register;
+use App\Http\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +22,6 @@ Route::get('/', function () {
 });
 
 Route::get('/counter', Counter::class);
+Route::get('/register', Register::class)->name('register');
+Route::get('/home', Home::class)->name('home');
+Route::get('/login', Login::class)->name('login');

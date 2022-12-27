@@ -1,4 +1,4 @@
-<nav id="header" class="w-full border-b-[1px] fixed">
+<nav id="header" class="w-full fixed">
     <div
         class="container bg-white flex flex-wrap lg:flex-nowrap justify-between items-center pt-[22px] pb-[26px] gap-[22px]">
         <div class="img-box">
@@ -15,12 +15,12 @@
                     clip-rule="evenodd"></path>
             </svg>
         </button>
-        <div id="navbar-defaults" class="hidden lg:block w-full lg:pt-5 lg:pb-5 lg:pt-5 lg:pb-5">
+        <div id="navbar-defaults" class="hidden lg:block w-full lg:pt-5 lg:pb-5">
             <div class="flex flex-col items-center justify-between gap-[5px] md:flex-row">
                 <!-- left -->
                 <div class="menu-navigation flex items-center gap-[70px]">
                     <ul class="flex flex-col md:flex-row items-center gap-8">
-                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="{{ route('home') }}" class="active">Home</a></li>
                         <li>
                             <div class="item-dropdown flex gap-[5px]">
                                 <a href="#" class="">Produk</a><img src="./assets/images/Carret-down.png"
@@ -39,10 +39,10 @@
 
                     </div>
                     <div class="button-box">
-                        <button
-                            class="lg:mb-0 mb-[20px] bg-blue-600 rounded-[14px] pl-11 pr-[43px] pt-[18px] pb-[18px] text-white leading-3 text-[12px] font-semibold hover:bg-blue-800">
-                            <h1>Login</h1>
-                        </button>
+                        <a href="{{ route('register') }}"><button
+                                class="lg:mb-0 mb-[20px] bg-blue-600 rounded-[14px] pl-11 pr-[43px] pt-[18px] pb-[18px] text-white leading-3 text-[12px] font-semibold hover:bg-blue-800">
+                                <h1>Daftar</h1>
+                            </button></a>
                     </div>
                 </div>
             </div>
