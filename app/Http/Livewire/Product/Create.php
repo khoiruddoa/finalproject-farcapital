@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Product;
 
 use App\Models\Submission;
+use App\Models\Category;
+use App\Models\Uom;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
@@ -12,22 +14,23 @@ class Create extends Component
     use WithFileUploads;
     public $title;
     public $description;
-    public $category_id = 1;
+    public $category_id;
     public $price;
     public $qty;
-    public $uom_id = 1;
+    public $uom_id;
     public $location_id = 1;
     public $status;
     public $photo;
     public function submit()
     {
-
         $this->validate([
             'title'      => 'required',
             'description'     => 'required',
+            'category_id' => 'required',
             'price'  => 'required',
             'qty' => 'required',
-            'photo' => 'image|max:3024' // 1MB Max
+            'uom_id' => 'required',
+            'photo' => 'image|max:3024' // 3MB Max
 
         ]);
 
@@ -40,9 +43,10 @@ class Create extends Component
             'qty'  => $this->qty,
             'uom_id'  => $this->uom_id,
             'location_id' => $this->location_id,
-            'photo' => $this->photo
+            'photo' => $this->photo->hashName()
         ]);
-        $this->photo->store('photo');
+
+        $this->photo->store('photo', 'public');
 
         if ($submission) {
             session()->flash('message', 'produk ditambahkan.');
@@ -52,6 +56,9 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.product.create');
+        return view('livewire.product.create', [
+            "categories" => Category::all(),
+            "uoms" => Uom::all()
+        ]);
     }
 }

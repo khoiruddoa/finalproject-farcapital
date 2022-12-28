@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\Container;
 use App\Http\Livewire\Counter;
+use App\Http\Livewire\Form\CreateCategory;
+use App\Http\Livewire\Form\CreateUom;
 use App\Http\Livewire\Form\Login;
 use App\Http\Livewire\Form\Register;
 use App\Http\Livewire\Home;
@@ -30,3 +32,5 @@ Route::get('/login', Login::class)->name('login');
 Route::get('/product', Product::class)->name('product');
 Route::get('/product/create', Create::class)->name('productCreate');
 Route::get('/logout', Logout::class)->name('logout');
+Route::get('/createCategory', CreateCategory::class)->name('createCategory');
+Route::get('/createUom', CreateUom::class)->name('createUom');
