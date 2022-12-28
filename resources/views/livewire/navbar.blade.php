@@ -2,7 +2,7 @@
     <div
         class="container bg-white flex flex-wrap lg:flex-nowrap justify-between items-center pt-[22px] pb-[26px] gap-[22px]">
         <div class="img-box">
-            <img src="images/logo.png" alt="logo" />
+            <img src="images/logo.png" alt="logo" class="py-4" />
         </div>
         <button data-collapse-toggle="navbar-defaults" type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -23,8 +23,8 @@
                         <li><a href="{{ route('home') }}" class="active">Home</a></li>
                         <li>
                             <div class="item-dropdown flex gap-[5px]">
-                                <a href="#" class="">Produk</a><img src="./assets/images/Carret-down.png"
-                                    alt="" class="object-contain" />
+                                <a href="{{ route('product') }}" class="">Produk</a><img
+                                    src="./assets/images/Carret-down.png" alt="" class="object-contain" />
                             </div>
                         </li>
                         <li><a href="#">Blog</a></li>
@@ -38,14 +38,29 @@
 
 
                     </div>
-                    <div class="button-box">
-                        <a href="{{ route('register') }}"><button
-                                class="lg:mb-0 mb-[20px] bg-blue-600 rounded-[14px] pl-11 pr-[43px] pt-[18px] pb-[18px] text-white leading-3 text-[12px] font-semibold hover:bg-blue-800">
-                                <h1>Daftar</h1>
-                            </button></a>
+
+                    <div class="flex flex-row justify-center items-center gap-5">
+                        @guest
+                            <div class="button-box">
+                                <a href="{{ route('register') }}"><button
+                                        class="lg:mb-0 mb-[20px] bg-blue-600 rounded-[14px] pl-11 pr-[43px] pt-[18px] pb-[18px] text-white leading-3 text-[12px] font-semibold hover:bg-blue-800">
+                                        <h1>Daftar</h1>
+                                    </button></a>
+                            </div>
+                            <div class="button-box">
+                                <a href="{{ route('login') }}"><button
+                                        class="lg:mb-0 mb-[20px] bg-blue-600 rounded-[14px] pl-11 pr-[43px] pt-[18px] pb-[18px] text-white leading-3 text-[12px] font-semibold hover:bg-blue-800">
+                                        <h1>Masuk</h1>
+                                    </button></a>
+                            </div>
+                        @endguest
+
+                        @auth
+                            <livewire:logout />
+                        @endauth
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
 </nav>

@@ -25,11 +25,13 @@ class Login extends Component
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
 
-            session()->regenerate();
-            return redirect()->intended(route('product'));
+
+
+            session()->flash('message', 'Register Berhasil!.');
+            return redirect()->route('product');
         } else {
             session()->flash('message', 'Alamat Email atau Password Anda salah!.');
-            return redirect()->route('auth.login');
+            return redirect()->route('login');
         }
     }
 

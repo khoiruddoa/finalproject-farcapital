@@ -14,7 +14,6 @@ class Register extends Component
     public $confirm_password;
 
 
-
     public function submit()
     {
         $this->validate([
