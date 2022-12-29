@@ -12,7 +12,7 @@ class Product extends Component
     public function render()
     {
         return view('livewire.product', [
-            'submissions' => Submission::all()
+            'submissions' => Submission::first()->paginate(8)
         ]);
     }
 }
