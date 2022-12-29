@@ -9,4 +9,8 @@ class Offer extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    public function submission()
+    {
+        return $this->belongsTo(Submission::class);
+    }
 }

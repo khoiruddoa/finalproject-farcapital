@@ -32,8 +32,6 @@ class DatabaseSeeder extends Seeder
                 'description' => $faker->sentence(mt_rand(2, 8)),
                 'category_id' => $faker->numberBetween(1, 10),
                 'price' => $faker->numberBetween(10000, 2000000),
-                'qty' => $faker->numberBetween(1, 50),
-                'uom_id' => $faker->numberBetween(1, 50),
                 'location_id' => $faker->numberBetween(1, 50)
             ]);
 

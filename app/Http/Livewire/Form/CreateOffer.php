@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Offer;
+use App\Models\Submission;
 use Livewire\Component;
 
 class CreateOffer extends Component
@@ -15,11 +16,15 @@ class CreateOffer extends Component
     public $comment;
 
     public $submission_id = 0;
+    public $submission = 0;
 
     public function mount($submission_id)
     {
         $this->submission_id = $submission_id;
+        $this->submission = Submission::find($submission_id);
     }
+
+
 
     public function submit()
     {
@@ -46,6 +51,9 @@ class CreateOffer extends Component
 
     public function render()
     {
-        return view('livewire.form.create-offer');
+        $submission = $this->submission;
+        return view('livewire.form.create-offer', [
+            'submissions' => $submission
+        ]);
     }
 }

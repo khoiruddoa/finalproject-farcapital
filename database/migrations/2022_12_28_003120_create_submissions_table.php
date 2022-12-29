@@ -21,8 +21,6 @@ class CreateSubmissionsTable extends Migration
             $table->text('description');
             $table->foreignId('category_id');
             $table->integer('price');
-            $table->float('qty', 10, 1);
-            $table->foreignId('uom_id');
             $table->foreignId('location_id');
             $table->boolean('status')->default(true);
             $table->string('photo')->nullable();

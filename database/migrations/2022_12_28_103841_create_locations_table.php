@@ -17,9 +17,10 @@ class CreateLocationsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->text('address');
-            $table->integer('id_kecamatan');
-            $table->integer('id_kota');
-            $table->integer('id_provinsi');
+            $table->integer('desa');
+            $table->integer('kecamatan');
+            $table->integer('kota');
+            $table->integer('provinsi');
             $table->timestamps();
         });
     }

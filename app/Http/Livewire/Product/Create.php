@@ -16,7 +16,7 @@ class Create extends Component
     public $description;
     public $category_id;
     public $price;
-    public $qty;
+
     public $uom_id;
     public $location_id = 1;
     public $status;
@@ -28,8 +28,6 @@ class Create extends Component
             'description'     => 'required',
             'category_id' => 'required',
             'price'  => 'required',
-            'qty' => 'required',
-            'uom_id' => 'required',
             'photo' => 'image|max:3024' // 3MB Max
 
         ]);
@@ -40,8 +38,6 @@ class Create extends Component
             'description'     => $this->description,
             'category_id' => $this->category_id,
             'price'  => $this->price,
-            'qty'  => $this->qty,
-            'uom_id'  => $this->uom_id,
             'location_id' => $this->location_id,
             'photo' => $this->photo->hashName()
         ]);
@@ -57,8 +53,7 @@ class Create extends Component
     public function render()
     {
         return view('livewire.product.create', [
-            "categories" => Category::all(),
-            "uoms" => Uom::all()
+            "categories" => Category::all()
         ]);
     }
 }
