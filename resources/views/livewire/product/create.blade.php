@@ -1,5 +1,6 @@
-<section class="pt-[90px] bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+<livewire:sidebar />
+<section class="pt-[40px] bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
         <div class="bg-white p-10 rounded-md">
             <form wire:submit.prevent="submit">
                 <div class="flex flex-row gap-5">

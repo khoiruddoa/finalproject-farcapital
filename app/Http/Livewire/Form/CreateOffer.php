@@ -17,17 +17,24 @@ class CreateOffer extends Component
 
     public $submission_id = 0;
     public $submission = 0;
+    public $offer = 0;
+    public $cek;
 
     public function mount($submission_id)
     {
         $this->submission_id = $submission_id;
         $this->submission = Submission::find($submission_id);
+        $this->offer = Offer::where('submission_id', $submission_id)->get();
+        $this->cek = Offer::where('submission_id', $this->submission_id)->where('user_id', Auth::user()->id)->first();
     }
 
 
 
     public function submit()
     {
+
+
+
 
         $this->validate([
             'offer_price'      => 'required',
@@ -53,7 +60,9 @@ class CreateOffer extends Component
     {
         $submission = $this->submission;
         return view('livewire.form.create-offer', [
-            'submissions' => $submission
+            'submissions' => $submission,
+            'offers' => $this->offer,
+            'cek' => $this->cek
         ]);
     }
 }
