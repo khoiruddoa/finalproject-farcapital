@@ -6,7 +6,7 @@ use App\Models\Location;
 use Livewire\Component;
 
 use Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CreateLocation extends Component
 {
@@ -20,7 +20,7 @@ class CreateLocation extends Component
 
     public function submit()
     {
-        dd($this->kabupaten);
+
         $this->validate([
             'address' => 'required',
             'provinsi' => 'required',
@@ -42,8 +42,8 @@ class CreateLocation extends Component
 
 
         if ($location) {
-            session()->flash('message', 'sukses menambah alamat.');
-            return redirect()->route('product');
+            Alert::success('Success', 'sukses menambah alamat');
+            return redirect()->route('user');
         }
     }
 
