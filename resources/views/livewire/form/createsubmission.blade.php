@@ -73,3 +73,4 @@
         </ul>
     </div>
 </aside>
+<livewire:product.create />

@@ -1,67 +1,71 @@
 <section class="pt-[90px] bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
-    <div class="flex flex-row items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 gap-6">
-        <div class="bg-white w-6/12 rounded-md flex flex-col gap-8 justify-center items-center py-4">
+    <div class="flex flex-row items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 gap-6">
+        <div class="bg-white w-7/12 rounded-md flex flex-col gap-8 justify-center items-center py-8 my-4">
             <div class="space-y-8 md:space-y-0 md:space-x-8 md:flex md:items-center">
-                <div class="flex justify-center items-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
-                    <img src="{{ asset('storage/photo/' . $submission->photo) }}">
-                </div>
-                <div class="w-full p-4">
+                <div class="flex flex-col justify-center items-center">
 
-                    <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                        {{ $submission->title }}</h5>
-                    <p><span class="font-bold">Kategori :</span> {{ $submission->category->category_name }}</p>
-                    <p class=" w-[200px] mb-3 font-normal text-gray-500 dark:text-gray-400">Deskripsi produk :
-                        {{ $submission->description }}</p>
-                    <p class="font-bold">{{ $submission->user->name }}</p>
-                    <time
-                        class="mb-1 text-sm font-normal text-gray-400 ">{{ $submission->created_at->diffForHumans() }}</time>
-                </div>
+                    <div><img src="{{ asset('storage/photo/' . $submission->photo) }}" class="h-[200] w-[200]"></div>
+                    <div class="w-full p-4">
+                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                            {{ $submission->title }}</h5>
+                        <p><span class="font-bold">Kategori :</span> {{ $submission->category->category_name }}</p>
+                        <p class=" w-[200px] mb-3 font-normal text-gray-500 dark:text-gray-400">
+                        <div x-data="{ open: false }">
+                            <button @click="open = true">Deskripsi Produk</button>
 
-            </div>
+                            <span x-show="open" @click.outside="open = false">
+                                {{ $submission->description }}
+                            </span>
+                        </div>
+                        </p>
+                        <p class="font-bold">{{ $submission->user->name }}</p>
+                        <time
+                            class="mb-1 text-sm font-normal text-gray-400 ">{{ $submission->created_at->diffForHumans() }}</time>
+                    </div>
 
+                    <div class=" w-10/12 h-[300px] flex justify-center overflow-auto p-4">
 
-            <div class=" w-10/12 h-[300px] flex justify-center overflow-auto p-4">
-
-                <ol class="relative border-gray-200 dark:border-gray-700 rounded-sm p-2">
-                    @foreach ($offers as $offer)
-                        <li class="mb-10 ml-6 flex flex-row gap-2">
-                            <div><img src="https://source.unsplash.com/40x40?man" class="rounded-full"></div>
-                            <div
-                                class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600">
-                                <div class="justify-between items-center mb-3 sm:flex">
-                                    <div class="text-sm font-normal text-gray-500 lex dark:text-gray-300">
-                                        <p class="font-bold">{{ $offer->user->name }}</p> Membuat penawaran senilai :<p>
-                                            Rp.
-                                            {{ $offer->offer_price }}</p>
+                        <ol class="relative border-gray-200 dark:border-gray-700 rounded-sm p-2">
+                            @foreach ($offers as $offer)
+                                <li class="mb-10 ml-6 flex flex-row gap-2">
+                                    <div><img src="https://source.unsplash.com/40x40?man" class="rounded-full"></div>
+                                    <div
+                                        class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600">
+                                        <div class="justify-between items-center mb-3 sm:flex">
+                                            <div class="text-sm font-normal text-gray-500 lex dark:text-gray-300">
+                                                <p class="font-bold">{{ $offer->user->name }}</p> Membuat penawaran
+                                                senilai :<p>
+                                                    Rp.
+                                                    {{ $offer->offer_price }}</p>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="p-3 text-xs italic font-normal text-gray-500 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-300">
+                                            {{ $offer->comment }}</div>
+                                        <time
+                                            class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ $offer->created_at->diffForHumans() }}</time>
                                     </div>
-                                </div>
-                                <div
-                                    class="p-3 text-xs italic font-normal text-gray-500 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-300">
-                                    {{ $offer->comment }}</div>
-                                <time
-                                    class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ $offer->created_at->diffForHumans() }}</time>
-                            </div>
-                            <div>
-                                @if ($offer->user->id == Auth::user()->id)
-                                    <button type="button"
-                                        class="text-white  bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-[10px] px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Hapus
-                                        Penawaran</button>
-                                @endif
+                                    <div>
+                                        @if ($offer->user->id == Auth::user()->id)
+                                            <button type="button"
+                                                class="text-white  bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-[10px] px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Hapus
+                                                Penawaran</button>
+                                        @endif
 
-                            </div>
+                                    </div>
 
-                        </li>
-                    @endforeach
+                                </li>
+                            @endforeach
 
 
-                </ol>
+                        </ol>
+
+                    </div>
+                </div>
 
             </div>
-
-
-
-
         </div>
+
         <div class="bg-white p-10 w-3/12 rounded-md">
             <form wire:submit.prevent="submit">
                 <div class="flex flex-row gap-5">
@@ -90,7 +94,7 @@
                 </div>
                 @if ($cek)
                     <button type="submit" disabled
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Penawaran
+                        class="text-white bg-red-700  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Penawaran
                         Sudah diajukan</button>
                 @else
                     <button type="submit"

@@ -24,17 +24,16 @@ class Register extends Component
 
         ]);
 
-        $user = User::create([
+        User::create([
             'name'      => $this->name,
             'email'     => $this->email,
             'telephone' => $this->telephone,
             'password'  => bcrypt($this->password)
         ]);
 
-        if ($user) {
-            session()->flash('message', 'Register Berhasil!.');
-            return redirect()->route('login');
-        }
+
+        session()->flash('message', 'Register Berhasil!.');
+        return redirect()->route('login');
     }
 
     public function render()

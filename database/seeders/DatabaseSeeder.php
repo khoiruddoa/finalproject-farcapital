@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-
+use App\Models\Category;
 use App\Models\Submission;
 
 use Illuminate\Support\Str;
@@ -20,6 +20,37 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+
+        Category::query()->create([
+            'category_name' => 'Buah-buahan'
+        ]);
+        Category::query()->create([
+            'category_name' => 'Buah-buahan'
+        ]);
+        Category::query()->create([
+            'category_name' => 'Buah-buahan'
+        ]);
+        Category::query()->create([
+            'category_name' => 'sayuran'
+        ]);
+        Category::query()->create([
+            'category_name' => 'makanam'
+        ]);
+        Category::query()->create([
+            'category_name' => 'Minuman'
+        ]);
+        Category::query()->create([
+            'category_name' => 'Perabotan'
+        ]);
+        Category::query()->create([
+            'category_name' => 'Buah-buahan'
+        ]);
+        Category::query()->create([
+            'category_name' => 'tanaman'
+        ]);
+        Category::query()->create([
+            'category_name' => 'hadiah'
+        ]);
 
         $faker = Faker::create('id_ID');
 

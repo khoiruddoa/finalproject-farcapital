@@ -7,6 +7,7 @@ use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Create extends Component
 {
@@ -41,11 +42,10 @@ class Create extends Component
         ]);
 
 
+        Alert::success('Produk Anda Sudah ditambahkan', 'Pembeli sudah kita siapkan');
 
-        if ($submission) {
-            session()->flash('message', 'produk ditambahkan.');
-            return redirect()->route('myproduct');
-        }
+
+        return redirect()->route('myproduct');
     }
 
     public function render()

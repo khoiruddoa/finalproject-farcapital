@@ -1,10 +1,13 @@
 <section class="pt-[110px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
-        @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
+        <div><input class="form-control mb-3" type="text" wire:model="search" placeholder="Search" aria-label="search">
+        </div>
+        <div class="flex items-center  mb-10">
+            <input checked id="checked-checkbox" type="checkbox" value="true" wire:model="cheapest"
+                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="checked-checkbox"
+                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Termurah</label>
+        </div>
 
 
         <div class="grid grid-cols-4 gap-4">
@@ -22,7 +25,11 @@
                             <a href="#">
                                 <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                                     {{ $submission->title }}</h5>
+
                             </a>
+                            <p>
+                            </p>
+
 
                             <div class="flex items-center justify-between">
                                 <span class="text-2xl font-bold text-gray-900 dark:text-white">Rp.

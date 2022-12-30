@@ -1,6 +1,7 @@
 <livewire:sidebar />
 
-<section class="pt-[20px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
+
+<section class="pt-[100px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
         @if (session()->has('message'))
             <div class="alert alert-success">
@@ -28,10 +29,10 @@
                                 <span class="text-2xl font-bold text-gray-900 dark:text-white">Rp.
                                     {{ $submission->price }}</span>
                             </div>
-                            <div class="flex flex-row gap-4 my-4"> <a href=""
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    Edit</a> <a href=""
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Hapus</a>
+                            <div class="flex flex-row gap-4 my-4"><a
+                                    href="{{ route('myshowproduct', ['submission_id' => $submission->id]) }}"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Detail</a>
+
                             </div>
                         </div>
                     </div>

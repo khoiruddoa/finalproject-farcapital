@@ -6,10 +6,10 @@
             </p>
         </div>
         <div class="center pt-[30px] pb-[30px]">
-            <img src="./assets/images/logo-2.png" alt="" />
+
         </div>
         <div class="right lg:pb-0 pb-3">
-            <img src="./assets/images/social-icon.png" alt="" />
+
         </div>
     </div>
 </section>

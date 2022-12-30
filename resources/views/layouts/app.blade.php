@@ -66,11 +66,12 @@
     </style>
 
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @livewireStyles
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     <livewire:navbar />
     {{ $slot }}
 
