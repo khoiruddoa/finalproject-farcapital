@@ -1,17 +1,21 @@
 <section class="pt-[90px] bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
     <div class="flex flex-row items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 gap-6">
-        <div class="bg-white w-7/12 rounded-md flex flex-col gap-8 justify-center items-center py-8 my-4">
+        <div class="bg-white w-5/12 rounded-lg flex flex-col gap-8 justify-center items-center py-8 my-4">
             <div class="space-y-8 md:space-y-0 md:space-x-8 md:flex md:items-center">
                 <div class="flex flex-col justify-center items-center">
-
-                    <div><img src="{{ asset('storage/photo/' . $submission->photo) }}" class="h-[200] w-[200]"></div>
-                    <div class="w-full p-4">
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                    <div><img src="{{ asset('storage/photo/' . $submission->photo) }}" class="h-[200px] w-[300px]"></div>
+                    <div class="w-[500px] px-8">
+                        Nama Produk :
+                        <h5 class="mb-2 text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             {{ $submission->title }}</h5>
-                        <p><span class="font-bold">Kategori :</span> {{ $submission->category->category_name }}</p>
+                        <p><span class="font-bold">Kategori :</span></p>
+                        <h4 class="text-2xl font-semibold">{{ $submission->category->category_name }}</h4>
                         <p class=" w-[200px] mb-3 font-normal text-gray-500 dark:text-gray-400">
                         <div x-data="{ open: false }">
-                            <button @click="open = true">Deskripsi Produk</button>
+                            <button @click="open = true"
+                                class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Deskripsi
+                                Produk</button>
+                            </button><br>
 
                             <span x-show="open" @click.outside="open = false">
                                 {{ $submission->description }}
