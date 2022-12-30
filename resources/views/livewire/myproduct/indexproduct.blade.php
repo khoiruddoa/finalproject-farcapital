@@ -1,16 +1,7 @@
 <livewire:sidebar />
-
-
 <section class="pt-[100px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
-        @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
-        <div class="flex flex-row justify-between ">
-
-
+        <div class="flex flex-col justify-center items-center ">
             <div class="grid grid-cols-3 gap-4">
                 @foreach ($submissions as $submission)
                     <div
@@ -37,9 +28,10 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="pt-3 flex flex-col gap-1">
-                    {{ $submissions->links() }}
-                </div>
+
+            </div>
+            <div class="pt-3 flex flex-col gap-1">
+                {{ $submissions->links() }}
             </div>
         </div>
     </div>

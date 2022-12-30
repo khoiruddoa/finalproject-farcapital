@@ -5,7 +5,7 @@
             class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mb-10">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Buat akun baru
+                    Silahkan Daftar di sini
                 </h1>
                 <form class="space-y-4 md:space-y-6" wire:submit.prevent="submit">
                     <div>
@@ -48,9 +48,9 @@
                     <div>
 
                         <button type="submit"
-                            class="w-full text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create
-                            an account</button>
-                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                            class="w-full text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Buat
+                            Akun A-deal</button>
+                        <p class="text-sm font-light text-gray-500 dark:text-gray-400 py-4">
                             Sudah punya akun? <a href="{{ route('login') }}"
                                 class="font-medium text-primary-600 hover:underline dark:text-primary-500">Masuk
                                 disini</a>

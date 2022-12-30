@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use App\Models\User;
 use Livewire\Component;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Register extends Component
 {
@@ -12,6 +13,7 @@ class Register extends Component
     public $telephone;
     public $password;
     public $confirm_password;
+
 
 
     public function submit()
@@ -32,7 +34,7 @@ class Register extends Component
         ]);
 
 
-        session()->flash('message', 'Register Berhasil!.');
+        Alert::success('Registrasi berhasil', 'Silahkan masuk');
         return redirect()->route('login');
     }
 

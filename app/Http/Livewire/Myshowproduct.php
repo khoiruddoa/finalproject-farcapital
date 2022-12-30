@@ -10,7 +10,7 @@ class Myshowproduct extends Component
 
 {
     public $submission_id;
-
+    public $high;
     public $submission;
     public function mount($submission_id)
     {
@@ -18,9 +18,14 @@ class Myshowproduct extends Component
         $this->submission = Submission::find($submission_id);
     }
 
+
+
+
     public function render()
     {
-        $offers = Offer::where('submission_id', $this->submission_id)->get();
+
+
+        $offers = Offer::where('submission_id', $this->submission_id)->orderBy('offer_price', 'desc')->get();
 
         return view('livewire.myshowproduct', ["offers" => $offers]);
     }

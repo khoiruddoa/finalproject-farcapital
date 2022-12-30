@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Form;
 use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Login extends Component
 {
@@ -27,10 +28,10 @@ class Login extends Component
 
 
 
-            session()->flash('message', 'Register Berhasil!.');
+            Alert::success('Proses masuk berhasil', 'Silahkan berbelanja');
             return redirect()->route('product');
         } else {
-            session()->flash('message', 'Alamat Email atau Password Anda salah!.');
+            Alert::warning('Password/Email salah', 'Mohon masukkan dengan benar');
             return redirect()->route('login');
         }
     }

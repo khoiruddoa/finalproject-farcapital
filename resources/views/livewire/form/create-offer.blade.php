@@ -47,8 +47,12 @@
                                     </div>
                                     <div>
                                         @if ($offer->user->id == Auth::user()->id)
-                                            <button type="button"
-                                                class="text-white  bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-[10px] px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Hapus
+                                            <button wire:click="deleteId({{ $offer->id }})"
+                                                class="text-white
+                                                bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4
+                                                focus:ring-blue-300 font-medium rounded-full text-[10px] px-5 py-2.5
+                                                text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700
+                                                dark:focus:ring-blue-800">Hapus
                                                 Penawaran</button>
                                         @endif
 

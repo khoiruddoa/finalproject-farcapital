@@ -43,12 +43,6 @@
                     <div class="flex flex-row justify-center items-center gap-5">
                         @guest
                             <div class="button-box">
-                                <a href="{{ route('register') }}"><button
-                                        class="lg:mb-0 mb-[20px] bg-blue-600 rounded-[14px] pl-11 pr-[43px] pt-[18px] pb-[18px] text-white leading-3 text-[12px] font-semibold hover:bg-blue-800">
-                                        <h1>Daftar</h1>
-                                    </button></a>
-                            </div>
-                            <div class="button-box">
                                 <a href="{{ route('login') }}"><button
                                         class="lg:mb-0 mb-[20px] bg-blue-600 rounded-[14px] pl-11 pr-[43px] pt-[18px] pb-[18px] text-white leading-3 text-[12px] font-semibold hover:bg-blue-800">
                                         <h1>Masuk</h1>

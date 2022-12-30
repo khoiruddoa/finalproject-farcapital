@@ -10,19 +10,15 @@
                 class="more mb-[42px] font-[400px] text-[18px] leading-[28px] text-[#656464] lg:w-[491px] lg:text-left text-center">
                 Harga kamu yang tentukan. pembeli kami yang siapkan.
             </div>
-            <div
-                class=" px-[30px] py-[12px] mb-[20px] bg-blues bg-opacity-10 lg:w-[177px] rounded-[8px] text-blues text-xs hover:bg-opacity-30">
-                <a href="#">DAFTAR DAN TUMBUH BERSAMA</a>
-            </div>
+
             <div class="button flex flex-col  lg:flex-row md:flex-row gap-[18px] md:pb-2">
-                <div
-                    class="button-invite px-[42px] py-[24px] border-[1px] border-blues rounded-[14px] text-blues hover:bg-blues hover:text-white">
-                    About More
-                </div>
-                <div
-                    class="button-invite lg:mb-0  md:mb-0 mb-3 px-[42px] py-[24px] border-[1px] border-blues rounded-[14px] text-blues hover:bg-blues hover:text-white">
-                    Invite Friend
-                </div>
+                <a href="{{ route('register') }}">
+                    <div
+                        class="button-invite px-[42px] py-[24px] border-[1px] border-blues rounded-[14px] text-blues hover:bg-blues hover:text-white">
+                        DAFTAR
+                    </div>
+                </a>
+
             </div>
         </div>
         <div class="right mt-[72px] mb-[82px]">

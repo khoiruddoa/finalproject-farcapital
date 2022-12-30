@@ -16,7 +16,7 @@ class CreateOffer extends Component
 
     public $offer_price;
     public $comment;
-
+    public $deleteId = '';
     public $submission_id = 0;
     public $submission = 0;
     public $offers = 0;
@@ -26,7 +26,7 @@ class CreateOffer extends Component
     {
         $this->submission_id = $submission_id;
         $this->submission = Submission::find($submission_id);
-        $this->offers = Offer::where('submission_id', $submission_id)->get();
+        $this->offers = Offer::where('submission_id', $submission_id)->orderby('id', 'desc')->get();
         $this->cek = Offer::where('submission_id', $this->submission_id)->where('user_id', Auth::user()->id)->first();
     }
 
@@ -39,7 +39,7 @@ class CreateOffer extends Component
 
 
         $this->validate([
-            'offer_price'      => 'required',
+            'offer_price'      => 'required|max:10',
 
         ]);
 
@@ -56,18 +56,24 @@ class CreateOffer extends Component
 
         // session()->flash('message', 'Penawaran Telah diajukan.');
     }
-    public function delete($id_offer)
+
+    public function deleteId($offer_id)
     {
-        Alert::question('Question Title', 'Question Message');
-        offer::find($id_offer)->delete();
-        Alert::info('Info Title', 'Info Message');
+
+        offer::find($offer_id)->delete();
+        Alert::warning('Penawaranmu telah dihapus', 'Anda bisa mengajukan penawaran kembali');
         return redirect()->route('createOffer', ['submission_id' => $this->submission_id]);
     }
+
+
+
+
+
 
 
     public function render()
     {
 
-        return view('livewire.form.create-offer');
+        return view('livewire.form.create-offer', ['submission_id' => $this->submission_id]);
     }
 }
