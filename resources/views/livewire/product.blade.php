@@ -1,7 +1,27 @@
-<section class="pt-[110px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
-        <div><input class="form-control mb-3" type="text" wire:model="search" placeholder="Search" aria-label="search">
+<section
+    class="pt-[110px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff] flex flex-col justify-center items-center">
+    <div><input class="form-control mb-3 rounded-xl" type="text" wire:model="search" placeholder="Cari..."
+            aria-label="search">
+    </div>
+
+    <div class="flex flex-row justify-center items-center bg-white rounded-lg p-2 gap-8">
+        <div>
+            <select id="small" class="w-full p-2  text-sm text-gray-900 border-0" wire:model="category">
+                <option selected>Kategori</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                @endforeach
+
+            </select>
         </div>
+        <div class="flex items-center">
+            <input checked id="checked-checkbox" type="checkbox" value="true" wire:model="cheapest"
+                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="checked-checkbox"
+                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Termurah</label>
+        </div>
+    </div>
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
         <div wire:loading>
             <button disabled type="button"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
@@ -17,16 +37,6 @@
                 Loading...
             </button>
         </div>
-
-
-
-        <div class="flex items-center  mb-10">
-            <input checked id="checked-checkbox" type="checkbox" value="true" wire:model="cheapest"
-                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checked-checkbox"
-                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Termurah</label>
-        </div>
-
 
         <div class="grid grid-cols-4 gap-4">
             @foreach ($submissions as $submission)
