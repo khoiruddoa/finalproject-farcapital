@@ -54,7 +54,7 @@
                             <div class="flex flex-col items-start justify-between gap-5">
                                 <div><span class="text-2xl font-bold text-gray-900 dark:text-white">
                                         @currency($submission->price)</span></div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col gap-3">
                                     <div>
                                         <a href="{{ route('createOffer', ['submission_id' => $submission->id]) }}"
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get
@@ -65,14 +65,14 @@
                                     }" x-init="fetch('https://dev.farizdotid.com/api/daerahindonesia/provinsi/{{ $submission->location->provinsi }}')
                                         .then(response => response.json())
                                         .then(data => provinsi = data)" x-text="provinsi.nama"
-                                            class="text-sm text-gray-500 dark:text-gray-400"></span>
+                                            class="text-sm text-gray-500 dark:text-gray-400"></span><br>
 
                                         <span x-data="{
                                             kota: [],
                                         }" x-init="fetch('https://dev.farizdotid.com/api/daerahindonesia/kota/{{ $submission->location->kabupaten }}')
                                             .then(response => response.json())
                                             .then(data => kota = data)" x-text="kota.nama"
-                                            class="text-sm text-gray-500 dark:text-gray-400"></span>
+                                            class="text-sm text-gray-500 dark:text-gray-400"></span>,
 
 
                                         <span x-data="{
@@ -80,7 +80,7 @@
                                         }" x-init="fetch('https://dev.farizdotid.com/api/daerahindonesia/kecamatan/{{ $submission->location->kecamatan }}')
                                             .then(response => response.json())
                                             .then(data => kecamatan = data)" x-text="kecamatan.nama"
-                                            class="text-sm text-gray-500 dark:text-gray-400"></span>
+                                            class="text-sm text-gray-500 dark:text-gray-400"></span>, <br>
 
                                         <span x-data="{
                                             kelurahan: [],

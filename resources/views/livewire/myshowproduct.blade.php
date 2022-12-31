@@ -4,24 +4,37 @@
             <div class="space-y-8 md:space-y-0 md:space-x-8 md:flex md:items-center">
                 <div class="flex flex-col justify-center items-center">
                     <div><img src="{{ asset('storage/photo/' . $submission->photo) }}" class="h-[200] w-[200]"></div>
-                    <div class="w-full p-4">
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+
+                    <div class="w-[500px] px-8">
+                        <h5 class=" text-center mb-2 text-3xl font-bold text-gray-900 dark:text-white">
                             {{ $submission->title }}</h5>
-                        <p><span class="font-bold">Kategori :</span> {{ $submission->category->category_name }}</p>
-                        <p class=" w-[180px] mb-3 font-normal text-gray-500 dark:text-gray-400">
+                        <h5 class="mb-2 text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                        </h5>
+                        <p><span class="font-bold">Kategori :</span></p>
+                        <h4 class="text-2xl font-semibold">{{ $submission->category->category_name }}</h4>
+                        <h4 class="text-4xl font-semibold">@currency($submission->price)</h4>
+                        <p class=" w-[200px] mb-3 font-normal text-gray-500 dark:text-gray-400">
+
                         <div x-data="{ open: false }">
-                            <button @click="open = true">Deskripsi Produk</button>
+                            <button type="button"
+                                class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Nonaktifkan
+                                Produk</button>
+                            <button @click="open = true"
+                                class="mt-3 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Deskripsi
+                                Produk</button>
+                            </button><br>
 
                             <span x-show="open" @click.outside="open = false">
-                                {{ $submission->description }}
+                                <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
+                                    {{ $submission->description }}
+                                </p>
                             </span>
                         </div>
                         </p>
-                        <p class="font-bold">{{ $submission->user->name }}</p>
+                        <p class="mt-4 font-bold">{{ $submission->user->name }}</p>
                         <time
                             class="mb-1 text-sm font-normal text-gray-400 ">{{ $submission->created_at->diffForHumans() }}</time>
                     </div>
-
                     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
 
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 m-4">

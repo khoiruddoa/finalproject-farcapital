@@ -11,6 +11,7 @@
                         </h5>
                         <p><span class="font-bold">Kategori :</span></p>
                         <h4 class="text-2xl font-semibold">{{ $submission->category->category_name }}</h4>
+                        <h4 class="text-4xl font-semibold">@currency($submission->price)</h4>
                         <p class=" w-[200px] mb-3 font-normal text-gray-500 dark:text-gray-400">
                         <div x-data="{ open: false }">
                             <button @click="open = true"
