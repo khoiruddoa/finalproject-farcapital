@@ -10,7 +10,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CreateLocation extends Component
 {
-
     public $provinsi;
     public $kabupaten;
     public $kecamatan;
@@ -18,8 +17,11 @@ class CreateLocation extends Component
     public $address;
 
 
+
     public function submit()
     {
+
+
 
         $this->validate([
             'address' => 'required',
@@ -43,7 +45,7 @@ class CreateLocation extends Component
 
         if ($location) {
             Alert::success('Success', 'sukses menambah alamat');
-            return redirect()->route('user');
+            return redirect()->route('profile');
         }
     }
 

@@ -21,4 +21,8 @@ class Submission extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }

@@ -35,15 +35,15 @@
                         <ol class="relative border-gray-200 dark:border-gray-700 rounded-sm p-2">
                             @foreach ($offers as $offer)
                                 <li class="mb-10 ml-6 flex flex-row gap-2">
-                                    <div><img src="https://source.unsplash.com/40x40?man" class="rounded-full"></div>
+                                    <div><img src="{{ asset('storage/photo/' . $offer->user->photo) }}"
+                                            class="rounded-full w-8 h-8"></div>
                                     <div
                                         class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600">
                                         <div class="justify-between items-center mb-3 sm:flex">
                                             <div class="text-sm font-normal text-gray-500 lex dark:text-gray-300">
                                                 <p class="font-bold">{{ $offer->user->name }}</p> Membuat penawaran
                                                 senilai :<p>
-                                                    Rp.
-                                                    {{ $offer->offer_price }}</p>
+                                                    @currency($offer->offer_price)</p>
                                             </div>
                                         </div>
                                         <div

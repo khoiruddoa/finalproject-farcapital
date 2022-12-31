@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Changephoto;
 use App\Http\Livewire\Container;
 use App\Http\Livewire\Counter;
 use App\Http\Livewire\Form\CreateCategory;
@@ -15,6 +16,7 @@ use App\Http\Livewire\Myproduct\Indexproduct;
 use App\Http\Livewire\Myshowproduct;
 use App\Http\Livewire\Product;
 use App\Http\Livewire\Product\Create;
+use App\Http\Livewire\Profil;
 use App\Http\Livewire\Sidebar;
 use Illuminate\Support\Facades\Route;
 
@@ -44,3 +46,5 @@ Route::get('/createLocation', CreateLocation::class)->middleware('auth')->name('
 Route::get('/myproduct', Indexproduct::class)->middleware('auth')->name('myproduct');
 Route::get('/createsubmission', Createsubmission::class)->middleware('auth')->name('createsubmission');
 Route::get('/myshowproduct/{submission_id}', Myshowproduct::class)->middleware('auth')->name('myshowproduct');
+Route::get('/profile', Profil::class)->middleware('auth')->name('profile');
+Route::get('/changephoto', Changephoto::class)->middleware('auth')->name('changephoto');
