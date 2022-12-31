@@ -8,7 +8,7 @@
                 Harga kamu yang tentukan. pembeli kami yang siapkan.
             </div>
             <div class="solution mb-[18px] font-[700] text-[56px] leading-[66px] mt-[-10px] text-center lg:text-left">
-                Jual Hasil Tanimu disini
+                Jual-Beli apapun dengan A-deal
             </div>
             <a href="{{ route('register') }}">
 
