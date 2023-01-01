@@ -120,6 +120,7 @@
                                     <h5
                                         class="text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
                                         {{ $submission->title }}</h5>
+                                    <p>{{ $submission->category->category_name }}</p>
 
                                 </a>
                                 <p>

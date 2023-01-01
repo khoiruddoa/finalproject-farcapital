@@ -26,40 +26,172 @@ class Product extends Component
 
 
         $submissions = Submission::where('status', 'true')->latest()->paginate(8);
-        //pencarian berdasar title
-        if ($this->search !== null) {
-            $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->latest()->paginate(8);
 
-            //pencarian title dan termurah
-            if ($this->cheapest == true) {
-                $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->orderBy('price', 'asc')->paginate(8);
-            }
+        //pencarian berdasar title
+        if ($this->search !== null && $this->cheapest == null && $this->category == null) {
+            $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->latest()->paginate(8);
         }
 
+
         //pencarian termurah
-        else if ($this->cheapest == true) {
+        else if ($this->cheapest == true && $this->category == null && $this->search == null) {
             $submissions = Submission::where('status', 'true')->orderBy('price', 'asc')->paginate(8);
         }
 
-        //pencarin berdasar kategori
-        else if ($this->category !== null) {
-            $submissions = Submission::where('status', 'true')->where('category_id', 'like', '%' . $this->category . '%')->latest()->paginate(8);
+        //pencarian berdasar kategori
+        else if ($this->category !== null && $this->cheapest == null && $this->search == null) {
+            $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->latest()->paginate(8);
+        }
+
+
+        //berdasarkan title dan termurah
+
+
+        else if ($this->cheapest == true && $this->search !== null && $this->category == null) {
+            $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->orderBy('price', 'asc')->paginate(8);
+        }
+
+        //berdasarkan title dan category
+        else if ($this->search !== null && $this->category !== null && $this->cheapest == false) {
+            $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->where('category_id', $this->category)->latest()->paginate(8);
+        }
+
+
+        //berdasarkan kategori dan termurah
+        else if ($this->search == null && $this->category !== null && $this->cheapest == true) {
+            $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->orderBy('price', 'asc')->paginate(8);
+        }
+
+        //berdasarkan kategori termurah dan judul
+        else if ($this->search !== null && $this->category !== null && $this->cheapest == true) {
+            $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->where('title', 'like', '%' . $this->search . '%')->orderBy('price', 'asc')->paginate(8);
         }
 
 
 
-        //pencarian berdasarkan provinsi
-        if ($this->provinsi !== null) {
+        if ($this->provinsi !== null && $this->kabupaten == null) {
             $submissions = Submission::where('status', 'true')->whereHas('location', function ($q) {
                 $q->where('provinsi', $this->provinsi);
             })->paginate(8);
 
-            if ($this->kabupaten !== null) {
+
+            if ($this->search !== null && $this->cheapest == null && $this->category == null) {
+                $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->whereHas('location', function ($q) {
+                    $q->where('provinsi', $this->provinsi);
+                })->latest()->paginate(8);
+            }
+
+
+            //pencarian termurah
+            else if ($this->cheapest == true && $this->category == null && $this->search == null) {
                 $submissions = Submission::where('status', 'true')->whereHas('location', function ($q) {
-                    $q->where('kabupaten', $this->kabupaten);
-                })->paginate(8);
+                    $q->where('provinsi', $this->provinsi);
+                })->orderBy('price', 'asc')->paginate(8);
+            }
+
+            //pencarian berdasar kategori
+            else if ($this->category !== null && $this->cheapest == null && $this->search == null) {
+                $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->whereHas('location', function ($q) {
+                    $q->where('provinsi', $this->provinsi);
+                })->latest()->paginate(8);
+            }
+
+
+            //berdasarkan title dan termurah
+
+
+            else if ($this->cheapest == true && $this->search !== null && $this->category == null) {
+                $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->whereHas('location', function ($q) {
+                    $q->where('provinsi', $this->provinsi);
+                })->orderBy('price', 'asc')->paginate(8);
+            }
+
+            //berdasarkan title dan category
+            else if ($this->search !== null && $this->category !== null && $this->cheapest == false) {
+                $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->where('category_id', $this->category)->whereHas('location', function ($q) {
+                    $q->where('provinsi', $this->provinsi);
+                })->latest()->paginate(8);
+            }
+
+
+            //berdasarkan kategori dan termurah
+            else if ($this->search == null && $this->category !== null && $this->cheapest == true) {
+                $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->whereHas('location', function ($q) {
+                    $q->where('provinsi', $this->provinsi);
+                })->orderBy('price', 'asc')->paginate(8);
+            }
+
+            //berdasarkan kategori termurah dan judul
+            else if ($this->search !== null && $this->category !== null && $this->cheapest == true) {
+                $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->where('title', 'like', '%' . $this->search . '%')->whereHas('location', function ($q) {
+                    $q->where('provinsi', $this->provinsi);
+                })->orderBy('price', 'asc')->paginate(8);
             }
         }
+
+        if ($this->kabupaten !== null) {
+            $submissions = Submission::where('status', 'true')->whereHas('location', function ($q) {
+                $q->where('kabupaten', $this->kabupaten);
+            })->paginate(8);
+
+
+            if ($this->search !== null && $this->cheapest == null && $this->category == null) {
+                $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->whereHas('location', function ($q) {
+                    $q->where('kabupaten', $this->kabupaten);
+                })->latest()->paginate(8);
+            }
+
+
+            //pencarian termurah
+            else if ($this->cheapest == true && $this->category == null && $this->search == null) {
+                $submissions = Submission::where('status', 'true')->whereHas('location', function ($q) {
+                    $q->where('kabupaten', $this->kabupaten);
+                })->orderBy('price', 'asc')->paginate(8);
+            }
+
+            //pencarian berdasar kategori
+            else if ($this->category !== null && $this->cheapest == null && $this->search == null) {
+                $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->whereHas('location', function ($q) {
+                    $q->where('kabupaten', $this->kabupaten);
+                })->latest()->paginate(8);
+            }
+
+
+            //berdasarkan title dan termurah
+
+
+            else if ($this->cheapest == true && $this->search !== null && $this->category == null) {
+                $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->whereHas('location', function ($q) {
+                    $q->where('kabupaten', $this->kabupaten);
+                })->orderBy('price', 'asc')->paginate(8);
+            }
+
+            //berdasarkan title dan category
+            else if ($this->search !== null && $this->category !== null && $this->cheapest == false) {
+                $submissions = Submission::where('status', 'true')->where('title', 'like', '%' . $this->search . '%')->where('category_id', $this->category)->whereHas('location', function ($q) {
+                    $q->where('kabupaten', $this->kabupaten);
+                })->latest()->paginate(8);
+            }
+
+
+            //berdasarkan kategori dan termurah
+            else if ($this->search == null && $this->category !== null && $this->cheapest == true) {
+                $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->whereHas('location', function ($q) {
+                    $q->where('kabupaten', $this->kabupaten);
+                })->orderBy('price', 'asc')->paginate(8);
+            }
+
+            //berdasarkan kategori termurah dan judul
+            else if ($this->search !== null && $this->category !== null && $this->cheapest == true) {
+                $submissions = Submission::where('status', 'true')->where('category_id', $this->category)->where('title', 'like', '%' . $this->search . '%')->whereHas('location', function ($q) {
+                    $q->where('kabupaten', $this->kabupaten);
+                })->orderBy('price', 'asc')->paginate(8);
+            }
+        }
+
+
+
+
 
 
 
