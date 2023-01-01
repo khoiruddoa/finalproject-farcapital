@@ -22,6 +22,20 @@ class Create extends Component
     public $photo;
 
 
+
+    public function mount()
+    {
+        $location_id =  Location::where('user_id', Auth::user()->id)->first();
+        if ($location_id == null) {
+            Alert::error('Belum isi Alamat', 'Silahkan isi alamat di menu profile');
+            return redirect()->route('myproduct');
+        } else {
+            return view('livewire.product.create', [
+                "categories" => Category::all()
+            ]);
+        }
+    }
+
     public function submit()
     {
         $this->validate([
@@ -61,7 +75,6 @@ class Create extends Component
 
     public function render()
     {
-
 
         return view('livewire.product.create', [
             "categories" => Category::all()

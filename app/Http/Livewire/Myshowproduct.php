@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\Submission;
 use App\Models\Offer;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Myshowproduct extends Component
 
 {
+    use LivewireAlert;
+    public $offers;
+    public $offer_id;
     public $submission_id;
     public $high;
     public $submission;
@@ -19,14 +24,27 @@ class Myshowproduct extends Component
     }
 
 
+    public function update($offer_id)
+    {
 
 
+        $offer = Offer::find($offer_id);
+        $submission = Submission::find($this->submission_id);
+
+        $submission->update(['status' => false]);
+        $offer->update([
+            'status'     => true
+        ]);
+        $this->alert('success', 'pembeli sudah dipilih!', [
+            'position' => 'center'
+        ]);
+    }
     public function render()
     {
 
 
-        $offers = Offer::where('submission_id', $this->submission_id)->orderBy('offer_price', 'desc')->get();
+        $this->offers = Offer::where('submission_id', $this->submission_id)->orderBy('offer_price', 'desc')->get();
 
-        return view('livewire.myshowproduct', ["offers" => $offers]);
+        return view('livewire.myshowproduct');
     }
 }

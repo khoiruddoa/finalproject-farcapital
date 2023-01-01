@@ -1,30 +1,97 @@
 <section
-    class="pt-[110px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff] flex flex-col justify-center items-center">
+    class="min-h-screen pt-[110px] pb-8 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff] flex flex-col justify-center items-center">
+
+    <livewire:iklan />
+
+
     <div><input class="form-control mb-3 rounded-xl" type="text" wire:model="search" placeholder="Cari..."
             aria-label="search">
     </div>
+    <div class="flex flex-col justify-center items-center   gap-4">
+        <div class="flex flex-row justify-center items-center bg-white rounded-lg p-2 gap-8">
+            <div>
+                <select id="small" class="w-full p-2  text-sm text-gray-900 border-0" wire:model="category">
+                    <option selected>Kategori</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                    @endforeach
 
-    <div class="flex flex-row justify-center items-center bg-white rounded-lg p-2 gap-8">
-        <div>
-            <select id="small" class="w-full p-2  text-sm text-gray-900 border-0" wire:model="category">
-                <option selected>Kategori</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                @endforeach
+                </select>
+            </div>
 
-            </select>
+            <div class="flex items-center">
+                <input checked id="checked-checkbox" type="checkbox" value="true" wire:model="cheapest"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="checked-checkbox"
+                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Termurah</label>
+            </div>
         </div>
-        <div class="flex items-center">
-            <input checked id="checked-checkbox" type="checkbox" value="true" wire:model="cheapest"
-                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checked-checkbox"
-                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Termurah</label>
+
+        <div x-data="{
+            open: false,
+            open2: false
+        }" class="flex flex-row justify-center items-center gap-4 mb-4">
+
+            <button class="flex flex-row justify-center items-center bg-white rounded-lg p-2 font-bold"
+                @click=" open = !open ">Cari
+                Berdasar Daerah
+            </button>
+            <div x-show="open" class="flex flex-row">
+                <div x-data="{
+                    provinsi: [],
+                    id: 0,
+                    namaprovinsi: '',
+                }" x-init="fetch('https://dev.farizdotid.com/api/daerahindonesia/provinsi')
+                    .then(response => response.json())
+                    .then(data => provinsi = data.provinsi)">
+
+
+                    <select x-on:change="id = $el.value, open2 = true" wire:model="provinsi"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-2 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="">Provinsi</option>
+                        <template x-for="prov in provinsi">
+                            <option :value="prov.id">
+                                <p x-text="prov.nama"></p>
+                            </option>
+                        </template>
+                    </select>
+
+
+
+
+                    <div>
+
+                        <div x-data="{
+                            kabupaten: [],
+                            idkab: 0
+                        }"
+                            x-effect="fetch('https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi='+id)
+                                                                                .then(response => response.json())
+                                                                                .then(data => kabupaten = data.kota_kabupaten)">
+                            <select x-show="open2" x-on:change="idkab = $el.value" wire:model="kabupaten"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-2 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                                <option value="">Kabupaten</option>
+                                <template x-for="kab in kabupaten">
+                                    <option :value="kab.id">
+                                        <p x-text="kab.nama"></p>
+                                    </option>
+                                </template>
+                            </select>
+                            <div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
+    <div class="flex flex-col items-center justify-start px-6 pt-2 mx-auto  lg:py-0">
         <div wire:loading>
             <button disabled type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
+                class="mb-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
                 <svg aria-hidden="true" role="status" class="inline mr-3 w-4 h-4 text-white animate-spin"
                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -37,18 +104,16 @@
                 Loading...
             </button>
         </div>
+        @if ($submissions->count())
+            <div class="grid grid-cols-4 gap-4 items-center">
+                @foreach ($submissions as $submission)
+                    <div
+                        class="w-full h-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+                        <a href="#">
+                            <img class="p-8 rounded-lg h-[200px] w-[300px] overflow-hidden"
+                                src="{{ asset('storage/photo/' . $submission->photo) }}" alt="product image" />
 
-        <div class="grid grid-cols-4 gap-4">
-            @foreach ($submissions as $submission)
-                <div
-                    class="w-full h-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
-                    <a href="#">
-                        <img class="p-8 rounded-xl h-[200px] w-[300px] overflow-hidden"
-                            @if ($submission->photo) src="{{ asset('storage/photo/' . $submission->photo) }}" alt="product image" />
-
-    @else
-    src="https://source.unsplash.com/200x300?{{ $submission->title }}"> @endif
-                            </a>
+                        </a>
                         <div class="px-5 pb-5 flex-col">
                             <div>
                                 <a href="#">
@@ -103,12 +168,26 @@
                                     </div>
                                 </div>
                             </div>
+                            <div>
+                                <p class="mt-4 font-bold">{{ $submission->user->name }}</p>
+                                <time
+                                    class="mb-1 text-sm font-normal text-gray-400 ">{{ $submission->created_at->diffForHumans() }}</time>
+                            </div>
                         </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="pt-3 flex flex-col gap-1">
+                {{ $submissions->links() }}
+            </div>
+        @else
+            <div>
+                <div class="flex p-4 mb-4 text-sm text-gray-700 bg-gray-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
+                    role="alert">
+                    <span class="font-medium text-center"></span> Produk Yang anda cari tidak ditemukan.
                 </div>
-            @endforeach
-        </div>
-        <div class="pt-3 flex flex-col gap-1">
-            {{ $submissions->links() }}
-        </div>
+            </div>
+        @endif
+
     </div>
 </section>

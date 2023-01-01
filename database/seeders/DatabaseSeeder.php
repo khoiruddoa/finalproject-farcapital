@@ -22,31 +22,31 @@ class DatabaseSeeder extends Seeder
 
 
         Category::query()->create([
-            'category_name' => 'Buah-buahan'
+            'category_name' => 'Transportas'
         ]);
         Category::query()->create([
-            'category_name' => 'Transportasi'
+            'category_name' => 'Property'
         ]);
         Category::query()->create([
             'category_name' => 'Rumah Tangga'
         ]);
         Category::query()->create([
-            'category_name' => 'sayuran'
+            'category_name' => 'Elektronik & Gadget'
         ]);
         Category::query()->create([
-            'category_name' => 'makanan'
+            'category_name' => 'Makanan & Minuman'
         ]);
         Category::query()->create([
-            'category_name' => 'Minuman'
+            'category_name' => 'Hoby & Olahraga'
         ]);
         Category::query()->create([
-            'category_name' => 'Perabotan'
+            'category_name' => 'Pertanian & Peternakan'
         ]);
         Category::query()->create([
-            'category_name' => 'Buah-buahan'
+            'category_name' => 'Kantor & Industri'
         ]);
         Category::query()->create([
-            'category_name' => 'Tanaman'
+            'category_name' => 'Jasa & Lowongan'
         ]);
         Category::query()->create([
             'category_name' => 'Digital'

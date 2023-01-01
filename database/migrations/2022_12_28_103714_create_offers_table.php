@@ -19,7 +19,7 @@ class CreateOffersTable extends Migration
             $table->foreignId('submission_id');
             $table->integer('offer_price');
             $table->text('comment');
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

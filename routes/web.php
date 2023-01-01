@@ -11,6 +11,7 @@ use App\Http\Livewire\Form\CreateUom;
 use App\Http\Livewire\Form\Login;
 use App\Http\Livewire\Form\Register;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\Iklan;
 use App\Http\Livewire\Logout;
 use App\Http\Livewire\Myproduct\Indexproduct;
 use App\Http\Livewire\Myshowproduct;
@@ -48,3 +49,4 @@ Route::get('/createsubmission', Createsubmission::class)->middleware('auth')->na
 Route::get('/myshowproduct/{submission_id}', Myshowproduct::class)->middleware('auth')->name('myshowproduct');
 Route::get('/profile', Profil::class)->middleware('auth')->name('profile');
 Route::get('/changephoto', Changephoto::class)->middleware('auth')->name('changephoto');
+Route::get('/iklan', Iklan::class)->name('iklan');

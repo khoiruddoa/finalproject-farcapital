@@ -1,19 +1,24 @@
-<section class="pt-[10px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff]">
+<section class="pt-[120px] pb-10 bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff] min-h-screen ">
     <div x-data="{
         open: false,
         open2: false
-    }" class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
+    }" class="flex flex-col items-center justify-start px-6 py-8 mx-auto lg:py-0">
         <div
             class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-end px-4 pt-4">
+            <div class="flex justify-center items-start px-4 pt-4">
 
 
 
             </div>
             <div class="flex flex-col items-center pb-10">
                 <div class="my-4 ">
-                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                        src="{{ asset('storage/photo/' . Auth::user()->photo) }}" alt="image" />
+                    @if (Auth::user()->photo)
+                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                            src="{{ asset('storage/photo/' . Auth::user()->photo) }}" alt="" />
+                    @else
+                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                            src="{{ asset('storage/photo/nophoto.png') }}" alt="" />
+                    @endif
                     <h5 class="mb-1 text-2xl font-medium text-gray-900 dark:text-white">{{ Auth::user()->name }}</h5>
                 </div>
 

@@ -3,7 +3,6 @@
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="{{ route('home') }}" class="flex items-center">
             <img src="{{ asset('storage/photo/logo.png') }}" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
-
         </a>
         <div class="flex items-center md:order-2">
             @auth
@@ -12,8 +11,12 @@
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
-                    <img class="w-8 h-8 rounded-full" src="{{ asset('storage/photo/' . Auth::user()->photo) }}"
-                        alt="user photo" />
+                    @if (Auth::user()->photo)
+                        <img class="w-8 h-8 rounded-full" src="{{ asset('storage/photo/' . Auth::user()->photo) }}"
+                            alt="user photo" />
+                    @else
+                        <img class="w-8 h-8 rounded-full" src="{{ asset('storage/photo/nophoto.png') }}" alt="user photo" />
+                    @endif
                 </button>
                 <!-- Dropdown menu -->
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -24,14 +27,6 @@
 
                     </div>
                     <ul class="py-1" aria-labelledby="user-menu-button">
-                        <li>
-                            <a href="{{ route('myproduct') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Produkku</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Penawaranku</a>
-                        </li>
                         <li>
                             <a href="{{ route('profile') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profil</a>
@@ -67,6 +62,16 @@
                     <a href="{{ route('product') }}"
                         class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Produk</a>
                 </li>
+                @auth
+                    <li>
+                        <a href="{{ route('myproduct') }}"
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">ProdukKU</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">PenawaranKU</a>
+                    </li>
+                @endauth
                 <li>
                     <a href="#"
                         class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tentang
