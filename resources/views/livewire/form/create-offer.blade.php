@@ -9,7 +9,7 @@
                         <div><img src="{{ asset('storage/photo/' . $submission->photo) }}"
                                 class="h-[300px] w-full rounded-xl object-cover"></div>
                         <div
-                            class=" w-full h-[500px] flex justify-center items-center overflow-auto p-4 bg-slate-200 rounded-xl">
+                            class=" w-full h-[500px] flex justify-center items-start overflow-auto p-4 bg-slate-200 rounded-xl">
 
                             <ol class="relative border-gray-200 dark:border-gray-700 rounded-sm p-2">
                                 @foreach ($offers as $offer)

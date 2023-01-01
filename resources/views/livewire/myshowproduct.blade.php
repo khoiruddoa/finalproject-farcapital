@@ -82,18 +82,20 @@
                                                     class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Pilih
                                                     Pembeli</button>
                                             @elseif($offer->status !== true && $offer->submission->status !== true)
-                                                <div class="bg-red-500 rounded-md">
+                                                <div class="bg-red-500 rounded-md text-white text-sm p-2">
                                                     pembeli ditolak</div>
                                             @else($offer->status == true && $offer->submission->status !== true)
-                                                <div class="bg-blue-800 rounded-md">
+                                                <div class="bg-blue-800 rounded-md  text-white text-sm p-2">
                                                     pembeli terpilih</div>
                                             @endif
-
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+
+
+
                     </div>
                 </div>
 

@@ -16,7 +16,8 @@ class Indexproduct extends Component
     {
 
         return view('livewire.myproduct.indexproduct', [
-            'submissions' => Submission::where('user_id', Auth::user()->id)->latest()->paginate(4),
+            'submissions' => Submission::where('user_id', Auth::user()->id)->where('status', true)->latest()->paginate(4),
+            'submissions_2' => Submission::where('user_id', Auth::user()->id)->where('status', false)->latest()->paginate(4),
             'users' => User::all()
         ]);
     }

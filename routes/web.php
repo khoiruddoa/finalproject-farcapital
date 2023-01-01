@@ -13,6 +13,7 @@ use App\Http\Livewire\Form\Register;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Iklan;
 use App\Http\Livewire\Logout;
+use App\Http\Livewire\Myoffers;
 use App\Http\Livewire\Myproduct\Indexproduct;
 use App\Http\Livewire\Myshowproduct;
 use App\Http\Livewire\Product;
@@ -50,3 +51,4 @@ Route::get('/myshowproduct/{submission_id}', Myshowproduct::class)->middleware('
 Route::get('/profile', Profil::class)->middleware('auth')->name('profile');
 Route::get('/changephoto', Changephoto::class)->middleware('auth')->name('changephoto');
 Route::get('/iklan', Iklan::class)->name('iklan');
+Route::get('/myoffers', Myoffers::class)->name('myoffers');
