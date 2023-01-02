@@ -1,5 +1,5 @@
 <nav
-    class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 w-full fixed flex flex-row gap-[100px]">
+    class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 w-full fixed flex flex-row gap-[100px] z-50">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="{{ route('home') }}" class="flex items-center">
             <img src="{{ asset('storage/photo/logo.png') }}" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />

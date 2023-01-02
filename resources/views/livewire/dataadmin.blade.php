@@ -6,35 +6,35 @@
 }"
     class="flex flex-row pt-[120px] bg-gradient-to-tl from-[#D4E7FE] to-[#ffffff] min-h-screen">
 
-    <aside class="w-64" aria-label="Sidebar">
-        <div class="overflow-y-auto py-4 px-3 bg-gray-300 rounded dark:bg-gray-800">
+    <aside class="w-64 ml-[50px] shadow-md fixed rounded-xl" aria-label="Sidebar">
+        <div class="overflow-y-auto py-4 px-3 bg-white rounded dark:bg-gray-800">
             <ul class="space-y-2">
                 <li>
                     <button @click="datauser = true"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                        class="w-56 flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                        <span class="ml-3">Daftar user</span>
+                        <span class="mx-3">Daftar user</span>
                     </button>
                 </li>
                 <li>
                     <button @click="datapengaju = true"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                        class="w-56 flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                        <span class="ml-3">Daftar Pengaju</span>
+                        <span class="mx-3">Daftar Pengaju</span>
                     </button>
                 </li>
                 <li>
                     <button @click="datapenawar = true"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                        class="w-56 flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                        <span class="ml-3">Daftar penawar</span>
+                        <span class="mx-3">Daftar penawar</span>
                     </button>
                 </li>
                 <li>
                     <button @click="tambahkategori = true"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                        class="w-56 flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
 
-                        <span class="ml-3">Tambah Kategori</span>
+                        <span class="mx-3">Tambah Kategori</span>
                         </a>
                 </li>
             </ul>
@@ -44,8 +44,9 @@
 
 
         <div x-show="datauser" @click.outside="datauser = false"
-            class="overflow-x-auto relative shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            class="overflow-x-auto relative shadow-md sm:rounded-lg mb-4">
+            <table class="w-full text-sm
+            text-left text-gray-500 dark:text-gray-400">
                 <caption
                     class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                     Daftar User
@@ -90,7 +91,7 @@
 
 
         <div x-show="datapengaju" @click.outside="datapengaju = false"
-            class="overflow-x-auto relative shadow-md sm:rounded-lg">
+            class="overflow-x-auto relative shadow-md sm:rounded-lg mb-4">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <caption
                     class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
@@ -134,19 +135,20 @@
                             </td>
                             <td class="py-4 px-6">
                                 @if ($submission->status == true)
-                                    laku
-                                @else
                                     tersedia
+                                @else
+                                    laku
                                 @endif
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+
         </div>
 
         <div x-show="datapenawar" @click.outside="datapenawar = false"
-            class="overflow-x-auto relative shadow-md sm:rounded-lg">
+            class="overflow-x-auto relative shadow-md sm:rounded-lg mb-4">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <caption
                     class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
@@ -195,6 +197,7 @@
                     @endforeach
                 </tbody>
             </table>
+
         </div>
         <div x-show="tambahkategori" @click.outside="tambahkategori= false">
             <livewire:form.create-category />
