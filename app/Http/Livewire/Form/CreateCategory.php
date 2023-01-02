@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Form;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Livewire\Component;
 
 use App\Models\Category;
@@ -24,8 +25,9 @@ class CreateCategory extends Component
         ]);
 
         if ($category) {
-            session()->flash('message', 'Berhasil menambah kategori.');
-            return redirect()->route('product');
+            Alert::success('Categori Anda Sudah ditambahkan', 'Horeeee');
+
+            return redirect()->route('dataadmin');
         }
     }
     public function render()

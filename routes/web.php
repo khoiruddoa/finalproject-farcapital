@@ -3,6 +3,7 @@
 use App\Http\Livewire\Changephoto;
 use App\Http\Livewire\Container;
 use App\Http\Livewire\Counter;
+use App\Http\Livewire\Dataadmin;
 use App\Http\Livewire\Form\CreateCategory;
 use App\Http\Livewire\Form\CreateLocation;
 use App\Http\Livewire\Form\CreateOffer;
@@ -54,3 +55,4 @@ Route::get('/changephoto', Changephoto::class)->middleware('auth')->name('change
 Route::get('/iklan', Iklan::class)->name('iklan');
 Route::get('/myoffers', Myoffers::class)->middleware('auth')->name('myoffers');
 Route::get('/product/edit/{submission_id}', Edit::class)->middleware('auth')->name('productedit');
+Route::get('/dataadmin', Dataadmin::class)->name('dataadmin');
