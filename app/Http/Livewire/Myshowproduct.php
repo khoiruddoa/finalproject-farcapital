@@ -27,7 +27,6 @@ class Myshowproduct extends Component
     public function update($offer_id)
     {
 
-
         $offer = Offer::find($offer_id);
         $submission = Submission::find($this->submission_id);
 
@@ -38,6 +37,27 @@ class Myshowproduct extends Component
         $this->alert('success', 'pembeli sudah dipilih!', [
             'position' => 'center'
         ]);
+    }
+
+
+    public function destroy($submission_id)
+    {
+
+        if ($this->offers->count()) {
+            $this->alert('warning', ' Produkmu tidak bisa dihapus. karena sudah ada penawar.', [
+                'position' => 'center'
+            ]);
+        } else {
+            $submission = Submission::find($submission_id);
+
+            if ($submission) {
+                $submission->delete();
+            }
+
+
+            Alert::warning('hmmmmmmm', 'Produk Anda Sudah dihapus');
+            return redirect()->route('myproduct');
+        }
     }
     public function render()
     {

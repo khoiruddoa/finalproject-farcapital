@@ -18,6 +18,7 @@ use App\Http\Livewire\Myproduct\Indexproduct;
 use App\Http\Livewire\Myshowproduct;
 use App\Http\Livewire\Product;
 use App\Http\Livewire\Product\Create;
+use App\Http\Livewire\Product\Edit;
 use App\Http\Livewire\Profil;
 use App\Http\Livewire\Sidebar;
 use Illuminate\Support\Facades\Route;
@@ -51,4 +52,5 @@ Route::get('/myshowproduct/{submission_id}', Myshowproduct::class)->middleware('
 Route::get('/profile', Profil::class)->middleware('auth')->name('profile');
 Route::get('/changephoto', Changephoto::class)->middleware('auth')->name('changephoto');
 Route::get('/iklan', Iklan::class)->name('iklan');
-Route::get('/myoffers', Myoffers::class)->name('myoffers');
+Route::get('/myoffers', Myoffers::class)->middleware('auth')->name('myoffers');
+Route::get('/product/edit/{submission_id}', Edit::class)->middleware('auth')->name('productedit');

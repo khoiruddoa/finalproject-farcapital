@@ -18,8 +18,17 @@
                         <div x-data="{ open: false }">
 
                             <button @click="open = true"
-                                class="mt-3 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Deskripsi
-                                Produk</button>
+                                class="mt-3 mr-2 text-white bg-yellow-600 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Deskripsi
+                                Produk
+                            </button>
+                            <a href="{{ route('productedit', ['submission_id' => $submission->id]) }}"><button
+                                    class="mt-3 mr-2 text-white bg-yellow-600 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Edit
+                                    Produk
+                                </button></a>
+                            </button>
+                            <button wire:click="destroy({{ $submission->id }})"
+                                class="mt-3 text-white bg-yellow-600 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Hapus
+                                Produk
                             </button><br>
 
                             <span x-show="open" @click.outside="open = false">
