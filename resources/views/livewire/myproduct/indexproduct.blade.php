@@ -55,7 +55,7 @@
                                     </a>
 
                                     <div class="flex items-center justify-between">
-                                        <span class="text-2xl font-bold text-gray-900 dark:text-white">Rp.
+                                        <span class="text-2xl font-bold text-gray-900 dark:text-white">
                                             @currency($submission->price)</span>
                                     </div>
                                     <div class="flex flex-row gap-4 my-4"><a

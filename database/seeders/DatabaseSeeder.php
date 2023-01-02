@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
 
         Category::query()->create([
-            'category_name' => 'Transportas'
+            'category_name' => 'Transportasi'
         ]);
         Category::query()->create([
             'category_name' => 'Property'
@@ -51,7 +51,9 @@ class DatabaseSeeder extends Seeder
         Category::query()->create([
             'category_name' => 'Digital'
         ]);
-
+        Category::query()->create([
+            'category_name' => 'Lain-lain'
+        ]);
         $faker = Faker::create('id_ID');
 
         // for ($i = 1; $i <= 50; $i++) {
