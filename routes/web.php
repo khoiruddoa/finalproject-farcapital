@@ -44,7 +44,7 @@ Route::get('/login', Login::class)->middleware('guest')->name('login');
 Route::get('/product', Product::class)->name('product');
 Route::get('/product/create', Create::class)->middleware('auth')->name('productCreate');
 Route::get('/logout', Logout::class)->middleware('auth')->name('logout');
-Route::get('/createCategory', CreateCategory::class)->middleware('auth')->name('createCategory');
+Route::get('/createCategory', CreateCategory::class)->middleware('admin')->name('createCategory');
 Route::get('/createOffer/{submission_id}', CreateOffer::class)->middleware('auth')->name('createOffer');
 Route::get('/createLocation', CreateLocation::class)->middleware('auth')->name('createLocation');
 Route::get('/myproduct', Indexproduct::class)->middleware('auth')->name('myproduct');
@@ -55,4 +55,4 @@ Route::get('/changephoto', Changephoto::class)->middleware('auth')->name('change
 Route::get('/iklan', Iklan::class)->name('iklan');
 Route::get('/myoffers', Myoffers::class)->middleware('auth')->name('myoffers');
 Route::get('/product/edit/{submission_id}', Edit::class)->middleware('auth')->name('productedit');
-Route::get('/dataadmin', Dataadmin::class)->name('dataadmin');
+Route::get('/dataadmin', Dataadmin::class)->middleware('admin')->name('dataadmin');
