@@ -18,10 +18,10 @@
                             tanggal
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            harga pengajuan
+                            harga Barang
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            harga penawaran
+                            penawaran
                         </th>
                         <th scope="col" class="py-3 px-6">
                             status barang
